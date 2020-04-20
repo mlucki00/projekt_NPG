@@ -18,6 +18,7 @@ def loadContacts():
                 surname = arr[1]
                 email = arr[2]
                 contacts.append(Contact(name, surname, email))
+            f.close()
     except IOError:
         f = open('ksiazka.txt','x')
         f.close()
@@ -25,8 +26,22 @@ def loadContacts():
     return contacts
 
 
+def closeProgram(array):
+    try:
+        with open('ksiazka.txt',"w") as f:
+            content = ""
+            for x in array:
+                content +="{} {} {}\n".format(x.name, x.surname, x.email)
+            f.write(content)
+            f.close()
+    except IOError:
+        print("nie moglem zapisac danych")
+
+
+
 def main():
-    contacts = loadContacts()
+
     return 0
+
 
 main()
