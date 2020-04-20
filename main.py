@@ -26,7 +26,7 @@ def loadContacts():
 
 
 def main():
-    loadContacts()
+    contacts = loadContacts()
     return 0
 
 main()
