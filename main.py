@@ -26,11 +26,11 @@ def loadContacts():
     return contacts
 
 
-def closeProgram(array):
+def closeProgram(contacts):
     try:
         with open('ksiazka.txt',"w") as f:
             content = ""
-            for x in array:
+            for x in contacts:
                 content +="{} {} {}\n".format(x.name, x.surname, x.email)
             f.write(content)
             f.close()
