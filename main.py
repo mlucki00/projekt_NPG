@@ -6,10 +6,12 @@ class Contact:
         self.surname = surname
         self.email = email
 
+def alphabeticalorder(obj):
+    result :str = obj.name+obj.surname
+    return result
 
-def loadContacts():
+def loadcontacts():
     contacts = []
-
     try:
         with open('ksiazka.txt') as f:
             for x in f:
@@ -17,21 +19,23 @@ def loadContacts():
                 name = arr[0]
                 surname = arr[1]
                 email = arr[2]
-                contacts.append(Contact(name, surname, email))
+                group = arr[3]
+                contacts.append(Contact(name, surname, email, group))
             f.close()
     except IOError:
         f = open('ksiazka.txt','x')
         f.close()
 
+    contacts.sort(key=alphabeticalorder)
     return contacts
 
 
-def closeProgram(array):
+def closeprogram(contacts):
     try:
         with open('ksiazka.txt',"w") as f:
             content = ""
-            for x in array:
-                content +="{} {} {}\n".format(x.name, x.surname, x.email)
+            for x in contacts:
+                content +="{} {} {} {}\n".format(x.name, x.surname, x.email, x.group)
             f.write(content)
             f.close()
     except IOError:
