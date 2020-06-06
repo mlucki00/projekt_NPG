@@ -31,12 +31,16 @@ def loadcontacts():
     return contacts
 
 
+
 def closeprogram(contacts):
+
     try:
         with open('ksiazka.txt',"w") as f:
             content = ""
             for x in contacts:
+
                 content +="{} {} {} {}\n".format(x.name, x.surname, x.email, x.group)
+
             f.write(content)
             f.close()
     except IOError:
