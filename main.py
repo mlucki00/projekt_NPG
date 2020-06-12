@@ -46,6 +46,37 @@ def closeprogram(contacts):
     except IOError:
         print("nie moglem zapisac danych")
 
+def addContact(contacts):
+        name = input("Podaj swoje imię: ")
+        surname = input("Podaj swoje nazwisko: ")
+        email = input("Podaj adres email: ")
+        group = input("Podaj grupę: ")
+        
+        if " " in name:
+            print("Błąd. Zła składnia imienia")
+            return contacts, 0
+        
+        elif " " in surname:
+            print("Błąd. Zła składnia nazwiska")
+            return contacts, 0
+        
+        elif " " in email:
+            print("Błąd. Zła składnia emaila")
+            return contacts, 0
+        
+        elif " " in group:
+            print("Błąd. Zła składnia grupy")
+            return contacts, 0
+        
+        else:
+            contacts.append(Contact(name, surname, email, group)
+            contacts.sort(key=alphabeticalorder)
+            for id, c in enumerate(contacts):
+                if c.name==name_ and c.surname==surname_ and c.email==email_ and c.group==group_:
+                    result_id = id
+        return contacts, result_id
+
+
 def sendmail(mail):
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
