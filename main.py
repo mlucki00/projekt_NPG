@@ -72,7 +72,7 @@ def addContact(contacts):
             contacts.append(Contact(name, surname, email, group)
             contacts.sort(key=alphabeticalorder)
             for id, c in enumerate(contacts):
-                if c.name==name_ and c.surname==surname_ and c.email==email_ and c.group==group_:
+                if c.name==name and c.surname==surname and c.email==email and c.group==group:
                     result_id = id
         return contacts, result_id
 
