@@ -30,7 +30,29 @@ def loadcontacts():
     contacts.sort(key=alphabeticalorder)
     return contacts
 
-
+def editcontact(contacts, id):
+    print("Podawaj poszczegolne dane do edycji bez uzywania spacji\n\n")
+    print("Podaj imie: ")
+    name_ = input()
+    print("Podaj nazwisko: ")
+    surname_ = input()
+    print("Podaj email")
+    email_ = input()
+    print("Podaj grupe")
+    group_ = input()
+    lista = [name_,surname_,email_,group_]
+    for string in lista:
+        for char in string:
+            if char == " ":
+                napis = "Bledny format w wyrazie: {}. Kontakt nie zostal edytowany".format(string)
+                print(napis)
+                return contacts
+    contacts[id].name = name_
+    contacts[id].surname = surname_
+    contacts[id].email = email_
+    contacts[id].group = group_
+    contacts.sort(key=alphabeticalorder)
+    return contacts
 
 def closeprogram(contacts):
 
