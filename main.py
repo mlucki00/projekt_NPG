@@ -99,6 +99,14 @@ def addContact(contacts):
         return contacts, result_id
 
 
+def findcontact(name_, surname_, contacts):
+    result = -1
+    for id,c in enumerate(contacts):
+        if c.name==name_ and c.surname==surname_:
+            result = id
+    return result
+
+
 def sendmail(mail):
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
@@ -122,7 +130,6 @@ def sendmail(mail):
     print("Wyslano")
 
 def main():
-
     return 0
 
 
