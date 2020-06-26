@@ -105,6 +105,46 @@ def findcontact(name_, surname_, contacts):
         if c.name==name_ and c.surname==surname_:
             result = id
     return result
+                            
+                            
+def scrollcontacts(contacts):
+    id = 0
+    while 1>0:
+        #Pusta tablica
+        if len(contacts) == 0:
+            print("Brak kontaktow. Aby dodac kontakt kliknij 1. Aby zamknac program kliknij 0")
+            choice = input()
+
+            #Dodanie kontaktu
+            if choice == "1":
+                contacts, id = addcontact(contacts)
+            #Zamkniecie programu
+            elif choice == "0":
+                closeprogram(contacts)
+                return 0
+            #Inne wejscie
+            else:
+                print("Nie ma takiej opcji")
+            time.sleep(1.0)
+
+        #Istnieja kontakty
+        else:
+            #Wypisanie kontaktu
+            c = contacts[id]
+            details = "{} {} {} {}\n".format(c.name, c.surname, c.email, c.group)
+            print(details)
+            options = " Aby dodac kontakt wcisnij 1\n aby usunac kontakt wcisnij 2\n aby wyslac maila wcisnij 3\n aby edytowac kontakt wcisnij 4\n aby wyszukac kontakt wcisnij 5\n aby zobaczyc nastepny kontakt wcisnij w\n aby zobaczyc poprzedni kontakt wcisnij q\n aby wylaczyc program wcisnij 0"
+            print(options)
+            choice = input()
+
+            #Dodanie kontaktu
+            if choice == "1":
+                contacts, id = addcontact(contacts)
+                c = contacts[id]
+                time.sleep(2.0)
+
+
+            #Usuniecie kontaktu
 
 
 def sendmail(mail):
