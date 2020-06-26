@@ -107,6 +107,32 @@ def findcontact(name_, surname_, contacts):
     return result
                             
                             
+def sendmail(mail):
+    port = 465  # For SSL
+    smtp_server = "smtp.gmail.com"
+    sender_email = "projeknpg@gmail.com"
+    receiver_email = mail
+    password = "zaliczenie_projektu2020"
+    print("podaj temat maila")
+    subject = input()
+    print("podaj tresc maila")
+    content = input()
+    message = """\
+    {}
+
+    {}""".format(subject, content)
+
+    print("Trwa wysylanie...")
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
+    print("Wyslano")
+
+def main():
+    return 0
+
+                            
 def scrollcontacts(contacts):
     id = 0
     while 1>0:
@@ -145,32 +171,5 @@ def scrollcontacts(contacts):
 
 
             #Usuniecie kontaktu
-
-
-def sendmail(mail):
-    port = 465  # For SSL
-    smtp_server = "smtp.gmail.com"
-    sender_email = "projeknpg@gmail.com"
-    receiver_email = mail
-    password = "zaliczenie_projektu2020"
-    print("podaj temat maila")
-    subject = input()
-    print("podaj tresc maila")
-    content = input()
-    message = """\
-    {}
-
-    {}""".format(subject, content)
-
-    print("Trwa wysylanie...")
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, message)
-    print("Wyslano")
-
-def main():
-    return 0
-
 
 main()
